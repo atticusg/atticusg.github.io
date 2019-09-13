@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link  href="assets/latex.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>VR Polygons</title>
+</head>
+
+<body>
+  <header class= "header">
+      <h4><a class="btn" href="../index.html">Back to Adam's site</a></h4>
+      <img src="assets/VRPolygonPic3.png" width="350" style="float: right;
+        margin: -60px 40px 0px -100px;">
+      <h1>
+        Vietoris-Rips Complexes
+      </h1>
+  </header>
+
+  <div class="sidenav">
+    <h4><a href="index.html">Home</a></h4>
+    <h4><a href="ph.html">What is Persistent Homology?</a></h4>
+    <h4><a href="vr.html">Vietoris-Rips Complexes</a></h4>
+    <h4><a href="cyclic.html">Cyclic Graphs and Winding Fraction</a></h4>
+    <h4><a href="stars.html">Stars Inscribed in Regular Polygons</a></h4>
+    <h4><a href="theorem.html">Main Theorem</a></h4>
+  </div>
+
+  <div class="container main">
+      <p>One of the most common "thickenings" of a point cloud that is used
+      in toological data analysis is the following, because of its computational
+      efficiency:</p>
+
+        <p><span class="bold">Definition. </span>For a finite metric space \(X\),
+        and a scale parameter \(r > 0\), the <a href="https://en.wikipedia.org/wiki/Vietoris%E2%80%93Rips_complex"
+        target="_blank"><span class="italic">Vietoris-Rips Complex</span></a>
+        (or simply, <span class="italic">VR Complex</span>), denoted by \(VR(X;r)\)
+        is the complex that contains a finite simplex \(\sigma \subseteq X\)
+        whenever diam\((\sigma) < r.\)</p>
+
+        <table class="image">
+        <caption align="bottom">An example VR Complex built on a point cloud.</caption>
+        <tr><td><img class="centered" src="assets/RipsExample.png" align="middle" style width="50%"></td></tr>
+        </table>
+
+        <p></p>
+
+        <p>Here we make three important remarks about VR Complexes:</p>
+
+        <p><span class="bold">Remark 1. </span>For every scale parameter \(r \ge 0\),
+        the complex \(VR(X;r)\) is <a href="https://en.wikipedia.org/wiki/Simplicial_complex"
+        target="_blank"><span class="italic">simplicial</span></a>. That is, it
+        satisifes the properties: (1) If \(\sigma\) is in \(VR(X;r)\) and if \(\tau\) is
+        in \(\sigma\), then \(\tau\) is in \(VR(X;r)\), and (2) If \(\sigma\) and \(\tau\) are in
+        V\(R(X;r)\), then \(\sigma \cap \tau\) is in \(VR(X;r)\).</p>
+
+        <p><span class="bold">Remark 2. </span>For any scale parameters \(r' \ge
+        r > 0\), the natural inclusion map \(VR(X;r) \to VR(X;r')\) is a homotopy
+        equivalence. That is,
+        any inceasing sequence of scale parameters gives rise to an increasing
+        sequence of simplicial complexes, called a <span class="italic">
+        VR simplicial filtration</span>.</p>
+
+        <p><span class="bold">Remark 3. </span>The complex \(VR(X;r)\) depends
+        only on pairwise distances in \(X\). That is, \(VR(X;r)\) is equal to the
+        clique complex of its 0-dimensional and 1-dimensional simplices.</p>
+
+        <p>Remarks 1 and 2 are necessary in a technical sense because they prove
+        that one can examine the persistent homology the point cloud. Remark 3
+        is important because it allows us to use general tools about clique
+        complexes to provide insight into VR complexes. Moreover, Remark 3 gives
+        us an optimization for storing the combinatorial object \(VR(X;r)\) in a
+        computer program.</p>
+
+        <table class="image">
+        <caption align="bottom">A Cech simplicial filtration of a point cloud.
+        Similar to, but slightly different from, the VR simplicial filtration
+        of the same point cloud.</caption>
+        <tr><td><img class="centered" src="assets/CechFiltration.gif" style width="80%"></td></tr>
+        </table>
+
+        <p></p>
+
+        <p>The importance of the VR simplicial filtration is solidified by an
+        important theorem, proving that the resulting persistent homology
+        barcodes from a VR simplicial filtration are "stable".</p>
+
+        <p><span class="bold">Theorem. </span>For \(M\) a compact metric space
+        and \(X \subseteq M\) a finite subspace, if \(X\) converges to \(M\) in
+        the Gromov-Hausdorff distance, then \(PH(X)\) converges to \(PH(M)\) in
+        the bottleneck distance.</p>
+
+        <p>One often likes to imagine that a point cloud \(X\) was created through a
+        (noisy) sampling from a manifold \(M\). However, there are very few
+        infinite, continuous spaces \(M\)
+        for which the barcodes \(PH(M)\) are known. Towards this end, we were
+        able to compute \(PH(M)\) for \(M = P_n\) the boundary of any regular
+        polygon, equipped with the Euclidean metric of the plane.</p>
+
+      <footer class="footer container">
+        <small>&copy; Adam Quinn Jaffe 2018
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

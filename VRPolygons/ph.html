@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link  href="assets/latex.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>VR Polygons</title>
+</head>
+
+<body>
+  <header class= "header">
+      <h4><a class="btn" href="../index.html">Back to Adam's site</a></h4>
+      <img src="assets/VRPolygonPic3.png" width="350" style="float: right;
+        margin: -60px 40px 0px -100px;">
+      <h1>
+        What is Persistent Homology?
+      </h1>
+  </header>
+
+  <div class="sidenav">
+    <h4><a href="index.html">Home</a></h4>
+    <h4><a href="ph.html">What is Persistent Homology?</a></h4>
+    <h4><a href="vr.html">Vietoris-Rips Complexes</a></h4>
+    <h4><a href="cyclic.html">Cyclic Graphs and Winding Fraction</a></h4>
+    <h4><a href="stars.html">Stars Inscribed in Regular Polygons</a></h4>
+    <h4><a href="theorem.html">Main Theorem</a></h4>
+  </div>
+
+  <div class="container main">
+      <p>In the last two decades, there has been growing interest in analyzing
+        the "shape" of data. Precisely, any collection of points in space may
+        take on some shape (say, it was noisily sampled from an
+        underlying manifold), and data scientists or others might gain insight
+        into their data set by uncovering this shape. To accomplish this, the
+        tools of topology are apt.</p>
+
+        <p>Of course, any
+        point cloud can be considered a topological space with an obvious
+        discrete topology endowed, but this does lend much insight. Instead, one
+        often wants to "thicken" such a space to one with a less trivial topology.
+        It turns out to be difficult to do this in a canonical way, but it is
+        possible if one decides to fix a given <span class="italic">scale
+        parameter</span> \(r > 0\). This allows us to construct many different types
+        of thickenings (e.g. Cech Complex, Vietoris-Rips Complex, Alpha
+        Complex, etc.)
+
+        <p>In the most general case, we can resolve the issue of not being able
+        to choose a single canonical scale parameter by instead letting the
+        scale parameter take on a range of values and studying the topology of the
+        thickening at every scale. Here we can track which topological features persist
+        and which die during this process. The insight is that if a feature
+        persists for many values of the scale parameter, then that feature must be
+        more essential to topology of the point cloud itself. This theory is known as
+        <a href="https://en.wikipedia.org/wiki/Persistent_homology"
+        target="_blank"><span class="italic">persistent homology</span></a>, and
+        forms the basis for <a href="https://en.wikipedia.org/wiki/Topological_data_analysis"
+        target="_blank"><span class="italic">topological data analysis</span></a>,
+
+        <table class="image">
+        <caption align="bottom">An example simplicial filtration of a point cloud
+        and the resulting persistent homology barcodes.</caption>
+        <tr><td><img class="centered" src="assets/persistentHomology.png" align="middle" style width="75%"></td></tr>
+        </table>
+
+        <p></p>
+
+        <p>The persistence of each shape in a space \(X\) is usually described by
+        the <span class="italic">persistence barcodes</span> of \(X\), denoted
+        \(PH(X)\). Essentially, the barcodes track the lifetime of each topological feature, so
+        one can see which features were the most important to the point cloud itself.</p>
+
+      <footer class="footer container">
+        <small>&copy; Adam Quinn Jaffe 2018
+        </small>
+      </footer>
+    <div>
+
+  </body>
+</html>

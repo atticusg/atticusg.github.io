@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link  href="assets/latex.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>VR Polygons</title>
+</head>
+
+<body>
+  <header class= "header">
+      <h4><a class="btn" href="../index.html">Back to Adam's site</a></h4>
+      <img src="assets/VRPolygonPic3.png" width="350" style="float: right;
+        margin: -60px 40px 0px -100px;">
+      <h1>
+        Cyclic Graphs and Winding Fraction
+      </h1>
+  </header>
+
+  <div class="sidenav">
+    <h4><a href="index.html">Home</a></h4>
+    <h4><a href="ph.html">What is Persistent Homology?</a></h4>
+    <h4><a href="vr.html">Vietoris-Rips Complexes</a></h4>
+    <h4><a href="cyclic.html">Cyclic Graphs and Winding Fraction</a></h4>
+    <h4><a href="stars.html">Stars Inscribed in Regular Polygons</a></h4>
+    <h4><a href="theorem.html">Main Theorem</a></h4>
+  </div>
+
+  <div class="container main">
+          <p>A major result of previous work is that the homotopy type of the
+          clique complex of any <span class="italic">cyclic graph</span> depends
+          only on its <span class="italic">winding fraction</span>. These
+          details can be understood in the following informal manner:</p>
+
+          <p><span class="bold">Definition. </span>A directed graph \(G\) is
+          <span class="italic">cyclic</span> if its vertices can be placed in a
+          cyclic order such that, whenever there is an edge \(u \to w\), then
+          there are also edges \(u \to v \to w\) for all \(u \prec v \prec w\).</p>
+
+          <p><span class="bold">Definition. </span>For a cyclic graph \(G\) and
+          a vertex \(v\), define \(f(v)\) to be the clockwise-most vertex \(w\)
+          such that there exists an edge \(v\to w\). Then the <span class="italic">
+          winding fraction</span> of \(G\) is</p>
+
+          \[ \mbox{wf}(G) = \sup\bigg\{\frac{\omega}{k}\bigg\}\]
+
+          where the ratio \(\omega/k\) is realized by an \(f\)-periodic orbit with
+          length \(k\) which "winds" \(\omega\) times around its center, and the
+          \(\sup\) is taken over all \(f\)-periodic orbits in \(G\).</p>
+
+          <table class="image">
+          <caption align="bottom">A (finite) cyclic graph of winding fraction \(1/4\).</caption>
+          <tr><td><img class="centered" src="assets/cyclicGraph.png" align="middle" style width="50%"></td></tr>
+          </table>
+
+          <p></p>
+
+          <p><span class="bold">Definition. </span>A cyclic graph is called
+          <span class="italic">metric</span> if its vertex set can be given a
+          metric \(d\) such that \(u \prec v \prec w\) implies \(d(u,v)< d(u,w)\).</p>
+
+          <p>For technical reasons, metric cyclic graphs behave much more nicely
+          than mere cyclic graphs. Indeed, the existence of the nearly monotone metric
+          guarantees that certain \(f\)-periodic orbits unique, many functions
+          from \(G\) into \(\mathbb{R}\) are continuous, etc. While we omit these
+          details for brevity's sake, a main contribution of this project was
+          the development of this general theory of metric cyclic graphs.</p>
+
+          <p>All this in mind, we are able to reduce this topological task to a
+          purely geometric one: When are (metric) cyclic graphs supported in \(P_n\)
+          and how does the winding fraction change over these regimes?</p>
+
+    <footer class="footer container">
+      <small>&copy; Adam Quinn Jaffe 2018
+      </small>
+    </footer>
+  </div>
+
+  </body>
+</html>

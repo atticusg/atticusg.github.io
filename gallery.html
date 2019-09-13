@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
+    <link  href="assets/latex.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>AQJ</title>
+  </head>
+
+  <body>
+    <header class= "header"><h1>Gallery</h1></header>
+    <div class="sidenav">
+      <h4><a href="index.html">Home</a></h4>
+      <h4><a href="assets/cv_AQJ.pdf">CV</a></h4>
+      <h4><a href="research.html">Research</a></h4>
+      <h4><a href="notes.html">Notes</a></h4>
+      <h4><a href="gallery.html">Gallery</a></h4>
+      <h4><a href="links.html">Links</a></h4>
+    </div>
+
+    <div class="container main">
+      <p>Some mathematical art that I've created or discovered
+        during my research and musings.
+      </p>
+
+      <div>
+        <p style="margin: 0px 0px 0px 0px">
+          <b><i>An SDE Stabilizing on Hyperbolas (May 2019)</i></b>
+        </p>
+        <img src="assets/SDE_hyperbolic_attractors.png" width="500" style=
+        "margin: 15px 0px 15px 25px;">
+        <p> I recently found myself studying the stochastic differential
+          equation (SDE) \(dX_t = \cos(\pi t)dt + \sin(\pi t X_t)dB_t\) with
+          \(X_0 = 0\). While no explicit solutions exist, I predicted
+          the following interesting qualitative behavior: The noise term
+          should have only a weak effect on the system whenever
+          \(\sin(\pi t X_t)\approx 0\), i.e. whenever \(X_t\approx k/t\)
+          for \(k\in\mathbb{N}\). In other words, I expected that any
+          sample path which goes near one of these hyperbolas should
+          stay near the curve until a sufficiently large random force
+          knocks it away. I came across the image above while checking
+          this behavior computationally by
+          simulating 1000 sample paths of solutions to the SDE using the
+          Milstein scheme.
+        </p>
+      </div>
+
+      <div>
+        <p style="margin: 0px 0px 0px 0px">
+          <b><i>Simultaneous 2-Colorings of the Plane (August 2018)</i></b>
+        </p>
+        <img src="assets/colorsPlane.jpeg" width="500" style=
+        "margin: 15px 0px 15px 25px;">
+        <p> In an introductory graph theory class we proved that
+          any closed curve in the plane whose tangents have at
+          most finitely many self-intersections gives rise to a 2-colorable
+          partition of the plane. The image above is my chalkboard realization
+          of 2 such curves (red and purple) and their respective colorings
+          (blue and yellow) along with the regions colored by both (green).
+        </p>
+      </div>
+
+      <div>
+        <p style="margin: 0px 0px 0px 0px">
+          <b><i>Extremal Inscribed 5-stars in the 11-gon (September 2017)</i></b>
+        </p>
+        <img src="assets/VRPolygonPic.png" width="300" style=
+        "margin: 0px 0px 0px 25px;">
+        <p> In <i>Vietoris-Rips Complexes of Regular Polygons</i>, we proved that
+          \(n \ge 4\ell + 2\) is a necessary and sufficient condition for
+          every point on the boundary of the regular polygon \(P_n\) to be
+          contained in a unique \((2\ell+1)\)-pointed star whose vertices
+          also lie on the boundary of \(P_n\). Furthermore, we proved that the stars of
+          maximal side length are those containing a vertex of \(P_n\) and that the
+          stars of minimal side length are those containing a midpoint of an
+          edge of \(P_n\). The following image realizes \(P_{11}\) (black)
+          along with its minimal (blue) and maximal (green) inscribed 5-pointed stars.
+        </p>
+      </div>
+
+      <footer class="footer container">
+        <small>&copy; Adam Quinn Jaffe 2019
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>

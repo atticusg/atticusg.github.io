@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  <link  href="assets/latex.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>VR Polygons</title>
+</head>
+
+<body>
+  <header class= "header">
+      <h4><a class="btn" href="../index.html">Back to Adam's site</a></h4>
+      <img src="assets/VRPolygonPic3.png" width="350" style="float: right;
+        margin: -60px 40px 0px -100px;">
+      <h1>
+        Stars Inscribed in Regular Polygons
+      </h1>
+  </header>
+
+  <div class="sidenav">
+    <h4><a href="index.html">Home</a></h4>
+    <h4><a href="ph.html">What is Persistent Homology?</a></h4>
+    <h4><a href="vr.html">Vietoris-Rips Complexes</a></h4>
+    <h4><a href="cyclic.html">Cyclic Graphs and Winding Fraction</a></h4>
+    <h4><a href="stars.html">Stars Inscribed in Regular Polygons</a></h4>
+    <h4><a href="theorem.html">Main Theorem</a></h4>
+  </div>
+
+  <div class="container main">
+        <p>In the case of the regulr polygons, we are able to leverage the
+        cyclic graph machinery to determine the homotopy types of \(VR(P_n;r)\)
+        almost completely. Some preliminary results towards this direction are
+        the following:</p>
+
+        <p><span class="bold">Lemma. </span>There exist scales
+        \(\{r_n\}_{n=3}^\infty\) such that \(VR(P_n;r)\) is a cyclic graph for
+        all scales \(0 \le r < r_n\). Moreover, we have an explicit formula for
+        these scales.</p>
+
+        <p>This in mind, we note that the winding fraction of \(VR(P_n;r)\)
+        depends heavily on the existence of <span class="italic">stars</span>.</p>
+
+        <p><span class="bold">Definition. </span>A \((2\ell+1)\)-
+        <span class="italic">pointed star inscribed in</span> \(VR(P_n;r)\)
+        is an \(f\)-periodic orbit of size \(2\ell+1\) which "winds"
+        \(\ell\) times around its center.</p>
+
+        <p><span class="bold">Definition. </span>Let \(s_{n,\ell}\) and
+        \(t_{n,\ell}\) be the smallest and largest scale parameters \(r \ge 0\)
+        for which a \((2\ell+1)\)-pointed star can be inscribed in \(VR(P_n;r)\)</p>
+
+        <p>Note that the winding fraction of \(VR(P_n;r)\) is equal to
+        \(\ell/(2\ell+1)\) whenever \(r \in (s_{n,\ell},t_{n,\ell})\) In this
+        case, the homotopy type is a wedge sum of \(2\ell\)-dimensional spheres,
+        the number of which depends on the number of stars that can be inscribed
+        into \(VR(P_n;r)\). For \(r \notin [s_{n,\ell},t_{n,\ell}]\), the
+        homotopy type is simply an odd sphere. Hence, we turn to the question
+        of counting these stars.</p>
+
+        <p><span class="bold">Lemma. </span>For any basepoint \(v \in P_n\),
+        there exists a unique scale \(r \ge 0\) such that a unique
+        \((2\ell+1)\)-pointed star containing \(v\) can be inscribed in
+        \(VR(P_n;r)\), if and only if \(n \ge 4\ell+2\).</p>
+
+        <p><span class="bold">Lemma. </span>For \(\ell \ge 1\) and \(n \ge 4\ell+2\),
+        the function \(s_{2\ell+1}: P_n \to R\), assigning to each point
+        \(v \in P_n\) the scale \(r \ge 0\) above (the side length of the unique
+        star containing \(v\)), is continuous.</p>
+
+        <p>To get a sense of how many inscribed stars exist, we created a
+        collection of MATLAB simulations that can trace the side length function.
+        The source code can be accessed from the following link:</p>
+
+        <a href="https://github.com/aqjaffe/InscribedStarsDynamicalSystems" target="_blank">MATLAB Source Code</a>
+
+        <p></p>
+
+        <p>These simulations can illustrate some of the interesting behavior
+        and phenomena that these inscribed stars exhibit, in a variety of cases.
+        In what follows, we include a few animated examples of inscribing a star (blue)
+        into a regular polygon (black) parameterized by a moving basepoint (red).</p>
+
+        <h1>\(2l+1\) divides \(n\)</h1>
+
+        <p>In this case, every inscribed star is both equilateral and equiangular.
+        That is, the inscribed star for every basepoint is similar to every other.
+        Here we also get very simply explicit formulas for the locations of
+        vertices of each star, which allows us to compute the side length
+        function explicitly. We find that this side length function takes on a
+        simple (almost) parabolic shape.</p>
+
+        <h4>3-star in \(P_6\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(6,3).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(6,3)PLOT.png" height="250"/>
+        </div>
+
+        <h4>3-star in \(P_9\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(9,3).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(9,3)PLOT.png" height="250"/>
+        </div>
+
+        <h4>5-star in \(P_{10}\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(10,5).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(10,5)PLOT.png" height="250"/>
+        </div>
+
+        <h1>\(2l+1\) does not divide \(n\)</h1>
+
+        <p>In this case where n is one away from a multiple of 2l+1, we can
+        observe some interesting phenomena. The inscribed stars are no longer
+        necessarily equiangular, and the resulting side length plot takes on a
+        piecewise parabolic shape. Also, the animations show that the inscribed
+        stars have an odd tendency "breathing" while the move.</p>
+
+        <h4>3-star in \(P_7\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(7,3).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(7,3)PLOT.png" height="250"/>
+        </div>
+
+        <h4>5-star in \(P_{11}\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(11,5).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(11,5)PLOT.png" height="250"/>
+        </div>
+
+        <h4>7-star in \(P_{15}\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(15,7).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(15,7)PLOT.png" height="250"/>
+        </div>
+
+        <h4>9-star in \(P_{19}\)</h4>
+        <div>
+          <img src="assets/InscribeAllEquiStars(19,9).gif" height="200"/>
+          <img src="assets/InscribeAllEquiStars(19,9)PLOT.png" height="250"/>
+        </div>
+
+      <footer class="footer container">
+        <small>&copy; Adam Quinn Jaffe 2018
+        </small>
+      </footer>
+    </div>
+
+  </body>
+</html>
