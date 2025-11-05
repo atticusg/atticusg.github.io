@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bibliography - Atticus Geiger</title>
+    <meta name="description" content="Complete bibliography with BibTeX entries for Atticus Geiger's publications">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .theme-toggle {
+            transition: transform 0.2s ease-in-out;
+        }
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        pre code {
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 z-10 transition-colors">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="text-xl font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                    Atticus Geiger
+                </a>
+                <div class="flex items-center space-x-6">
+                    <a href="/" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Home</a>
+                    <a href="/assets/AtticusCV.pdf" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">CV</a>
+                    <a href="/research.html" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium">Research</a>
+                    <button onclick="toggleTheme()" class="theme-toggle p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" title="Toggle dark mode">
+                        <span id="theme-icon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 pb-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-12">
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+                    Complete Bibliography
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    BibTeX entries for all publications • <span id="total-count">41</span> total publications
+                </p>
+                <div class="flex space-x-4">
+                    <a href="/research.html" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">← Back to Research</a>
+                    <button onclick="copyAllBibtex()" class="text-blue-600 dark:text-blue-400 hover:underline font-medium">Copy All BibTeX</button>
+                </div>
+            </div>
+
+            <!-- Publications Container -->
+            <div class="space-y-6" id="bibliography-container">
+                <!-- Bibliography will be loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 dark:border-gray-700 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <p class="text-center text-sm text-gray-500 dark:text-gray-400">
+                © Atticus Geiger 2024
+            </p>
+        </div>
+    </footer>
+
+    <!-- Load publications data -->
+    <script src="./publications-data.js"></script>
+    <script>
+        // Theme switching functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                themeIcon.textContent = '🌙';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                themeIcon.textContent = '☀️';
+            }
+        }
+
+        // Initialize theme on page load
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const themeIcon = document.getElementById('theme-icon');
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+                if (themeIcon) themeIcon.textContent = '☀️';
+            } else {
+                document.documentElement.classList.remove('dark');
+                if (themeIcon) themeIcon.textContent = '🌙';
+            }
+        })();
+
+        // Generate BibTeX from publication data
+        function generateBibtex(pub) {
+            const type = pub.type || 'misc';
+            let bibtex = `@${type}{${pub.key},\n`;
+
+            // Add fields in order
+            if (pub.title) bibtex += `    title = {${pub.title}},\n`;
+            if (pub.authors) bibtex += `    author = {${pub.authors}},\n`;
+            if (pub.year) bibtex += `    year = {${pub.year}},\n`;
+            if (pub.venue) bibtex += `    ${type === 'article' ? 'journal' : 'booktitle'} = {${pub.venue}},\n`;
+            if (pub.url) bibtex += `    url = {${pub.url}},\n`;
+
+            bibtex = bibtex.replace(/,\n$/, '\n'); // Remove last comma
+            bibtex += '}';
+
+            return bibtex;
+        }
+
+        // Copy text to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                // Show brief feedback
+                const originalText = event.target.textContent;
+                event.target.textContent = 'Copied!';
+                setTimeout(() => {
+                    event.target.textContent = originalText;
+                }, 1500);
+            });
+        }
+
+        // Copy all BibTeX entries
+        function copyAllBibtex() {
+            if (typeof publications === 'undefined') return;
+
+            const allBibtex = publications.map(pub => generateBibtex(pub)).join('\n\n');
+            navigator.clipboard.writeText(allBibtex).then(() => {
+                alert('All BibTeX entries copied to clipboard!');
+            });
+        }
+
+        // Render bibliography
+        function renderBibliography() {
+            if (typeof publications === 'undefined') {
+                document.getElementById('bibliography-container').innerHTML =
+                    '<p class="text-red-500">Error: Could not load publications data</p>';
+                return;
+            }
+
+            const container = document.getElementById('bibliography-container');
+            document.getElementById('total-count').textContent = publications.length;
+
+            const bibliographyHTML = publications.map(pub => {
+                const bibtex = generateBibtex(pub);
+
+                return `
+                    <div id="${pub.bibtexAnchor}" class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 leading-tight">
+                                ${pub.title}
+                            </h3>
+                            <button onclick="copyToClipboard(\`${bibtex.replace(/`/g, '\\`')}\`)"
+                                    class="ml-4 px-3 py-1 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
+                                Copy BibTeX
+                            </button>
+                        </div>
+                        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                            ${pub.authors} • ${pub.venue} ${pub.year}
+                        </p>
+                        <pre class="bg-gray-100 dark:bg-gray-900 rounded p-4 overflow-x-auto border"><code class="text-sm text-gray-800 dark:text-gray-200">${bibtex}</code></pre>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = bibliographyHTML;
+
+            // Handle anchor links
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                        target.classList.add('ring-2', 'ring-blue-500', 'ring-opacity-50');
+                        setTimeout(() => {
+                            target.classList.remove('ring-2', 'ring-blue-500', 'ring-opacity-50');
+                        }, 3000);
+                    }
+                }, 100);
+            }
+        }
+
+        // Render bibliography on page load
+        window.onload = renderBibliography;
+    </script>
+</body>
+</html>
